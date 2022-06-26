@@ -335,7 +335,7 @@ impl<D: AppData, R: AppDataResponse, N: RaftNetwork<D>, S: RaftStorage<D, R>> Re
                     }
                     // Follower is behind, but not too far behind to receive an InstallSnapshot RPC.
                     self.target_state = TargetReplState::Lagging;
-                    return;
+                    
                 }
             }
         }

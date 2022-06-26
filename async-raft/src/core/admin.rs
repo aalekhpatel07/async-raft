@@ -107,7 +107,7 @@ impl<'a, D: AppData, R: AppDataResponse, N: RaftNetwork<D>, S: RaftStorage<D, R>
         // if we can proceed.
         let mut awaiting = HashSet::new();
         for new_node in members.difference(&self.core.membership.members) {
-            match self.non_voters.get(&new_node) {
+            match self.non_voters.get(new_node) {
                 // Node is ready to join.
                 Some(node) if node.is_ready_to_join => continue,
                 // Node has repl stream, but is not yet ready to join.

@@ -246,7 +246,7 @@ impl<D: AppData, R: AppDataResponse, N: RaftNetwork<D>, S: RaftStorage<D, R>> Ra
             current_term: self.current_term,
             voted_for: self.voted_for,
         };
-        Ok(self.storage.save_hard_state(&hs).await.map_err(|err| self.map_fatal_storage_error(err))?)
+        self.storage.save_hard_state(&hs).await.map_err(|err| self.map_fatal_storage_error(err))
     }
 
     /// Update core's target state, ensuring all invariants are upheld.
